@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Maker - Enhanced</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1><i class="fas fa-file-alt"></i> Resume Builder</h1>
+        <div class="actions">
+            <select id="template-selector" onchange="updatePreview()">
+                <option value="template-classic">Classic Template</option>
+                <option value="template-modern" selected>Modern Template</option>
+                <option value="template-creative">Creative Template</option>
+            </select>
+            <button class="secondary" onclick="downloadPDF()"><i class="fas fa-download"></i> Download PDF</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="editor-panel">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="John Doe" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+                <label>Job Title</label>
+                <input type="text" id="jobTitle" placeholder="Software Engineer" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="john@example.com" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="text" id="phone" placeholder="+1 234 567 890" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input type="text" id="location" placeholder="New York, USA" oninput="updatePreview()">
+            </div>
+
+            <h3 class="section-title">Professional Summary</h3>
+            <div class="form-group">
+                <textarea id="summary" placeholder="Briefly describe your professional background..." oninput="updatePreview()"></textarea>
+            </div>
+
+            <h3 class="section-title">Skills</h3>
+            <div class="form-group">
+                <label>Technical Skills (comma separated)</label>
+                <textarea id="skills" placeholder="JavaScript, HTML, CSS, React..." oninput="updatePreview()"></textarea>
+            </div>
+
+            <h3 class="section-title">Experience</h3>
+            <div class="form-group">
+                <textarea id="experience" style="height: 150px" placeholder="Senior Developer | Google | 2020 - Present&#10;- Led team of 5 developers&#10;- Improved performance by 20%" oninput="updatePreview()"></textarea>
+                <small style="color: #666; font-size: 0.8rem;">Format: Role | Company | Date (New line for bullets)</small>
+            </div>
+
+            <h3 class="section-title">Education</h3>
+            <div class="form-group">
+                <textarea id="education" placeholder="B.S. Computer Science | MIT | 2016 - 2020" oninput="updatePreview()"></textarea>
+            </div>
+        </div>
+
+        <div class="preview-panel">
+            <div id="resume-preview" class="template-modern">
+                </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
